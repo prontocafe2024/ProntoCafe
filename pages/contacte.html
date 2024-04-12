@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <title>Pronto cafe | Comrat</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="../css/style.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container-logo">
+            <a href="../index.html">
+                <img class="img-header" src="../images/logo.png" />
+            </a>
+        </div>
+        <navbar>
+            <a href="menu.html">Меню</a>
+            <a href="contacte.html">Контакты</a>
+        </navbar>
+    </header>
+
+
+    <div class="container">
+
+        <aside>
+            <a href="pizza.html"> <i class="fas fa-pizza-slice"></i> Пицца</a>
+            <a href="salate.html"> <i class="fas fa-seedling"></i> Салаты</a>
+            <a href="paste.html"> <i class="fas fa-utensils"></i> Паста</a>
+            <a href="bauturi.html"> <i class="fas fa-wine-glass"></i> Напитки</a>
+        </aside>
+
+        <main>
+            <h1 class="centered">Контакты</h1>
+            <hr />
+            <div class="container-contacte">
+                <div class="row">
+                    <div class="col-50 forma-contact ">
+                        <h4 class="centered">Ваше мнение очень важно для нас!
+                            Вы в любой момент можете связаться с нами по любым вопросам. </h4>
+                        <form autocomplete="off" id="formular">
+                            <input type="text" placeholder="Имя" required id="nume">
+                            <input type="email" placeholder="Email" required id="email">
+                            <input type="text" placeholder="Адрес" required id="subiect">
+                            <textarea placeholder="Сообщение" rows="6" id="mesaj"></textarea>
+                            <input id="transmite" type="button" value="Отправить" onclick="send()">
+                        </form>
+                    </div>
+                    <div class="col-50 telefoane-contact centered">
+                        <h3 class="centered">Контакты </h3>
+                        <br /> 
+                        <b>График работы: 9.30 - 23.00</b>
+                        <br /> <br />
+                        <b>Email</b> <a href="mailto:prontocafe659@gmail.com" class="link-info">prontocafe659@gmail.com</a><br />
+                        <br />
+                        <b>Бронирование/доставка:</b>
+                        <a href="tel:+373-68-414-111" class="link-success"><br />+373-68-414-111</a>,&nbsp;&nbsp;<br /><br />
+                        <b>Facebook: <a href="https://www.facebook.com/prontocafemd/" target="_blank" class="hl">prontocafe </a></b><br /><br />
+                        <b>instagram: <a href="https://www.instagram.com/prontocafemd/" target="_blank" class="hl">prontocafe</a></b>
+                    </div>
+                </div>
+
+                <br />
+                <div class="row">
+                    <div class="col-50 centered adrese-contact">
+                        <h3 class="centered">Адрес </h3>
+                        <br />
+                        <b>3805, АТО Гагаузия,</b> 
+                        <br /> <br />
+                        <b>Комрат:</b> <span>ул. Победы 30А</span>
+                        <br /> <br />
+                        
+                    </div>
+
+                    <div class="col-50">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2756.329886792591!2d28.655808810937998!3d46.30328557694494!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c9d9864e3756d1%3A0x4189ee87d662abb3!2sPronto%20Cafe!5e0!3m2!1sru!2s!4v1711010461410!5m2!1sru!2s" 
+                            width="400" height="300" style="border:0;" 
+                            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                    </div>
+                </div>
+
+            </div>
+
+        </main>
+
+
+    </div>
+
+    <footer>
+        <h5> Pronto cafe | Comrat 2024 ©</h5>
+        <h5> Данный веб-сайт был выполнен в рамках Региональной олимпиады: <br>
+            IT-технологии и не обязательно должен быть согласован с директором или представителем организации.
+        </h5>
+    </footer>
+
+    <script>
+
+        emailjs.init("Vvf2SVJ4_IWhz4e9v");
+        function send() {
+
+            if (document.getElementById("formular").checkValidity() == false) {
+                document.getElementById("formular").reportValidity();
+                return;
+            }
+
+            var date = {
+                nume: document.getElementById("nume").value,
+                email: document.getElementById("email").value,
+                subiect: document.getElementById("subiect").value,
+                mesaj: document.getElementById("mesaj").value
+            };
+
+            emailjs.send("service_prv83sb", "template_tg654ld", date)
+                .then(function (raspuns) {
+                    alert("Mesajul a fost transmis.")
+                    document.getElementById("formular").reset();
+                }, function (error) {
+                    alert("Eroare la transmitere. Contactati programatorul.")
+                })
+        }
+
+    </script>
+</body>
+
+</html>
